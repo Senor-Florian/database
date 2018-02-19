@@ -1,5 +1,6 @@
 const readlineSync = require('readline-sync');
 const fs = require('fs');
+var existsFile = require('exists-file');
 var database = {};
 var stayInLoop = true;
 
@@ -32,6 +33,9 @@ function saveTables () {
 }
 
 function loadTables () {
+  if (!existsFile.sync('database.json')) {
+    fs.writeFileSync('database.json', '{}');
+  }
   database = JSON.parse(fs.readFileSync('database.json', 'utf-8'));
 }
 

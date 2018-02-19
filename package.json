@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/Senor-Florian/database#readme",
   "dependencies": {
+    "create-file": "^1.0.1",
+    "exists-file": "^3.0.2",
+    "file-exists": "^5.0.1",
+    "node-file-exists": "^1.1.0",
     "readline-sync": "^1.4.8"
   }
 }
