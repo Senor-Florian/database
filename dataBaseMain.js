@@ -1,4 +1,5 @@
 const readlineSync = require('readline-sync');
+const fs = require('fs');
 var database = {};
 var stayInLoop = true;
 
@@ -24,6 +25,14 @@ function delByValue (table, value) {
 
 function createTable (table) {
   database[table] = {};
+}
+
+function saveTables () {
+  fs.writeFileSync('database.json', JSON.stringify(database), 'utf-8');
+}
+
+function loadTables () {
+  database = JSON.parse(fs.readFileSync('database.json', 'utf-8'));
 }
 
 function options () {
@@ -69,7 +78,9 @@ function loop () {
   }
 }
 
+loadTables();
 loop();
+saveTables();
 /*
 createTable('cat1');
 createTable('cat2');
